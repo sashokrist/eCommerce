@@ -22,3 +22,39 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('products', 'ProductController');
+
+//Route::get('product.single/{id}', 'ProductController@show');
+Route::get('/product/{id}', [
+   'uses' => 'FrontEndController@singleProduct',
+   'as' => 'product.single'
+]);
+
+Route::post('/cart/add', [
+    'uses' => 'ShoppingController@add_to_cart',
+    'as' => 'cart.add'
+]);
+
+Route::get('/cart', [
+    'uses' => 'ShoppingController@cart',
+    'as' => 'cart'
+]);
+
+Route::get('/cart/delete/{id}', [
+    'uses' => 'ShoppingController@delete',
+    'as' => 'cart.delete'
+]);
+
+Route::get('/cart/incr/{id}/{qty}', [
+   'uses' => 'ShoppingController@incr',
+   'as' => 'cart.incr'
+]);
+
+Route::get('/cart/decr/{id}/{qty}', [
+    'uses' => 'ShoppingController@decr',
+    'as' => 'cart.decr'
+]);
+
+Route::get('/cart/rapid/add/{id}', [
+   'uses' => 'ShoppingController@rapid_add',
+   'as' => 'cart.rapid.add'
+]);

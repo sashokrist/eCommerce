@@ -3,8 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Seosight - Shop</title>
-
+    <title>SJ - Shop</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/crumina-fonts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
@@ -42,15 +46,16 @@
 
                     <a href="#" class="js-cart-animate">
                         <i class="seoicon-basket"></i>
-                        <span class="cart-count">0</span>
+                        <span class="cart-count">{{ Cart::content()->count() }}</span>
                     </a>
-
+                    <a href="{{ route('cart') }}" class="btn btn-primary btn-small">View Cart</a>
                     <div class="cart-popup-wrap">
                         <div class="popup-cart">
                             <h4 class="title-cart">No products in the cart!</h4>
                             <p class="subtitle">Please make your choice.</p>
                             <div class="btn btn-small btn--dark">
-                                <span class="text">view all catalog</span>
+                                <span class="text">View cart</span>
+
                             </div>
                         </div>
                     </div>
@@ -65,7 +70,6 @@
 
 
 <div class="content-wrapper">
-
     <div class="container">
         <div class="row pt120">
             <div class="col-lg-8 col-lg-offset-2">
@@ -81,8 +85,6 @@
     <!-- End Books products grid -->
 
    @yield('page')
-</div>
-
 <!-- Footer -->
 
 <footer class="footer">
