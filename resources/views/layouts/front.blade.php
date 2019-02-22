@@ -17,7 +17,7 @@
 
 
     <!--Plugins styles-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link href="{{ asset('css/rimary-menu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">
@@ -40,12 +40,23 @@
     <div class="container">
 
         <div class="header-content-wrapper">
-
+            <ul class="nav">
+                <li class="cart">
+                    <a href="/" class="js-cart-animate">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li class="cart">
+                    <a href="{{ route('products.index') }}" class="js-cart-animate">
+                        |  <i class="fas fa-tools"></i>
+                    </a>
+                </li>
+            </ul>
             <ul class="nav-add">
                 <li class="cart">
 
                     <a href="#" class="js-cart-animate">
-                        <i class="seoicon-basket"></i>
+                        |  <i class="seoicon-basket"></i>
                         <span class="cart-count">{{ Cart::content()->count() }}</span>
                     </a>
                     <a href="{{ route('cart') }}" class="btn btn-primary btn-small">View Cart</a>
@@ -74,7 +85,7 @@
         <div class="row pt120">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="heading align-center mb60">
-                    <h4 class="h1 heading-title">E-commerce</h4>
+                    <h4 class="h1 heading-title"><a href="/">SJ E-commerce</a></h4>
                     <p class="heading-text">Buy product, and we ship to you.
                     </p>
                 </div>
@@ -103,6 +114,7 @@
 
 <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('js/crum-mega-menu.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 {{--<script src="{{ asset('js/swiper.jquery.min.js' }}"></script>--}}
 {{--<script src="{{ asset('js/theme-plugins.js' }}"></script>--}}
 {{--<script src="{{ asset('js/main.js' }}"></script>--}}
@@ -113,7 +125,14 @@
 {{--<script src="{{ asset('js/animation.velocity.min.js' }}"></script>--}}
 
 <!-- ...end JS Script -->
-
+    <script>
+        @if(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+        @if(Session::has('info'))
+        toastr.info('{{ Session::get('info') }}');
+        @endif
+    </script>
 
 </body>
 

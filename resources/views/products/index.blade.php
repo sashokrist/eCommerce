@@ -6,6 +6,7 @@
 
                 <div class="col-md-8">
                     <h1>Product page</h1>
+                    <a href="{{ route('products.create') }}" class="btn btn-success">Add New</a>
                     <table>
                         <tr>
                             <th>name</th>

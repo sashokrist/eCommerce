@@ -91,18 +91,18 @@
                                         </a>
 
                                         <span style="float: right;">
-								<form action="/your-server-side-code" method="POST">
-									  <script
-                                          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                          data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                                          data-amount="999"
-                                          data-name="Stripe.com"
-                                          data-description="Widget"
-                                          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                          data-locale="auto"
-                                          data-zip-code="true">
-									  </script>
-								</form>
+								<form action="{{ route('cart.checkout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                  <script
+                                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                      data-key="pk_test_dZaGp8KQJ9ZF06cRbuHQLfW6"
+                                      data-amount="{{ Cart::total() * 100 }}"
+                                      data-name="SJ eCommerce"
+                                      data-description="Buy Cool Gadgets"
+                                      data-image="{{ asset('img/liza.png') }}"
+                                      data-locale="auto">
+                                  </script>
+                                </form>
 							</span>
                                     </div>
                                 </div>
